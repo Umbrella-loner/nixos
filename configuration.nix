@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, zen-browser, ... }:
+{ config, lib, pkgs, zen-browser, ... }:
 
 {
   imports =
@@ -18,6 +18,12 @@ virtualisation.spiceUSBRedirection.enable = true;
 programs.virt-manager.enable = true;
 zramSwap.enable = true;
 
+#specialzations for my nixos 
+specialisation.lqx.configuration = {
+    system.nixos.tags = [ "lqx" ];
+
+    boot.kernelPackages = lib.mkForce pkgs.linuxPackages_lqx;
+  };
 
 #darkmode
 # Add this block to your configuration.nix
@@ -139,11 +145,30 @@ xdg.portal = {
   ];
 };
 
-#ssh-settings
 services.openssh = {
-enable = true;
+  enable = true;
+
+  settings = {
+    # Core security
+    PermitRootLogin = "no";
+    PasswordAuthentication = false;
+    KbdInteractiveAuthentication = false;
+    ChallengeResponseAuthentication = false;
+
+    # Use keys only
+    PubkeyAuthentication = true;
+ AllowTcpForwarding = "yes";
+    AllowAgentForwarding = false;
+    X11Forwarding = false;
+
+  };
+
+  # Optional but recommended
+  openFirewall = true;
 };
-  networking.firewall.allowedTCPPorts = [ 22 ];
+
+  services.fail2ban.enable = true;
+
 boot.kernelParams = [
 "console=tty50"
 "mem_sleep_default=deep"
@@ -215,6 +240,9 @@ programs.nix-index.enable = true;
   environment.systemPackages = with pkgs; [
 git
 terraform
+ffmpegthumbnailer
+xfce.tumbler 
+    mpv
 lm_sensors
 libnotify
 xfce.thunar

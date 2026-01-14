@@ -1,5 +1,6 @@
 { pkgs, ...}:
 
+
 {
   home.stateVersion = "25.11";
   #cursor-thing-dont-forget
@@ -70,8 +71,8 @@ programs.git = {
     aria = "aria2c -x16 -s16";
     vid = "yt-dlp --cookies-from-browser chrome";
     nrs = "sudo nixos-rebuild switch --flake /home/robin/nixos#doc";
-    nconf = "sudoedit /etc/nixos/configuration.nix";
-    nfk = "sudoedit /etc/nixos/flake.nix";
+    nconf = "nvim /home/robin/nixos/configuration.nix";
+    nfk = "nvim /home/robin/nixos/flake.nix";
   };
 
     initContent = ''
@@ -161,5 +162,7 @@ programs.tmux = {
 
   home.packages = with pkgs; [
     fastfetch 
+    openssl
+    cloud-utils
   ];
 }
