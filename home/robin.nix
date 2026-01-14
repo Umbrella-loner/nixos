@@ -17,6 +17,8 @@
   #nvim 
   home.file.".config/nvim/init.lua".source = ../nvim/init.lua;
 
+  #alacritty 
+  home.file.".config/alacritty/alacritty.toml".source = ./alacritty/alacritty.toml;
   #waybar settins 
   home.file.".config/waybar" = {
     source = ./waybar;
