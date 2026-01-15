@@ -9,7 +9,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-#dconf
 
 #virtualization
 virtualisation.libvirtd.enable = true;
@@ -99,6 +98,12 @@ services.logind.settings.Login = {
   HandleLidSwitchExternalPower = "ignore";
 };
 
+  #virtualization podman 
+  virtualisation.podman = { 
+    enable = true; 
+    dockerCompat = true;   #creates docker alias for podman 
+    defaultNetwork.settings.dns_enabled = true;
+  };
 
 programs.zsh = {
   enable = true;
@@ -246,14 +251,19 @@ programs.nix-index.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+direnv
+nix-direnv
 git
 terraform
+distrobox
 ffmpegthumbnailer
 pkgs.tumbler 
 mpv 
 swww
 lm_sensors
 libnotify
+wineWowPackages.stable 
+winetricks
 pkgs.thunar
 nerd-fonts.iosevka
 cliphist

@@ -48,7 +48,13 @@ programs.git = {
     };
   };
     
-  #tmux config
+  #direnv settings 
+  programs.direnv = { 
+    enable = true; 
+    enableZshIntegration = true; 
+    enableBashIntegration = true;
+    nix-direnv.enable = true; 
+  }; 
 
   #zsh-block
   programs.zsh = {
@@ -162,6 +168,8 @@ programs.tmux = {
 
   home.packages = with pkgs; [
     fastfetch 
+    direnv 
+    nix-direnv
     openssl
     cloud-utils
   ];
