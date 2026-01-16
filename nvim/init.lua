@@ -20,7 +20,7 @@ require("lazy").setup({
     config = function()
       require("tokyonight").setup({
         style = "night", -- Options: storm, moon, night, day
-        transparent = true,
+        transparent = false,
         terminal_colors = true,
         styles = {
           comments = { italic = true },

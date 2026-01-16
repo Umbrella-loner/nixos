@@ -24,6 +24,17 @@ zramSwap.enable = true;
       Defaults pwfeedback
     '';
   };
+
+  #allow libvirt networking 
+  networking.firewall = { 
+    enable = true; 
+    trustedInterfaces = [ "virbr0" ];
+  };
+
+  networking.nat = { 
+    enable = true;
+    internalInterfaces = [ "virbr0" ];
+  };
 #specialzations for my nixos 
 specialisation.lqx.configuration = {
     system.nixos.tags = [ "lqx" ];
@@ -152,8 +163,6 @@ environment.variables = {
 programs.appimage.enable = true;
 programs.appimage.binfmt = true;
 
-# niri session
-programs.niri.enable = true;
 
 # xdg-desktop-portal (correct option name)
   xdg.portal = { 
@@ -173,17 +182,9 @@ services.openssh = {
     PasswordAuthentication = false;
     KbdInteractiveAuthentication = false;
     ChallengeResponseAuthentication = false;
-
-    # Use keys only
-    PubkeyAuthentication = true;
- AllowTcpForwarding = "yes";
-    AllowAgentForwarding = false;
-    X11Forwarding = false;
-
   };
 
   # Optional but recommended
-  openFirewall = true;
 };
 
   services.fail2ban.enable = true;
