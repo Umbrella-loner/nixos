@@ -15,6 +15,11 @@ home.homeDirectory = "/home/robin";
     gtk.enable = true;
   };
 
+#nix index 
+programs.nix-index = { 
+  enable = true;
+  enableZshIntegration = true;
+};
   #symlinks 
   #nirii 
   home.file.".config/niri/config.kdl".source = ../niri/config.kdl;
@@ -66,24 +71,16 @@ programs.git = {
     nix-direnv.enable = true; 
   }; 
 
-  #zsh-block
-  programs.zsh = {
-    enable = true;
-    #sessionVariables
-    sessionVariables = {
-    LIBVIRT_DEFAULT_URI = "qemu:///system";
-  };
-
-    history = {
-    path = "$HOME/.zsh_history";
-    size = 10000; 
-    save = 10000; 
-    share = true;
-    ignoreDups = true;
-    expireDuplicatesFirst = true;
-  };
-
-    shellAliases = {
+#fish block 
+programs.fish = {
+  enable = true;
+  
+  shellInit = ''
+    set -gx LIBVIRT_DEFAULT_URI "qemu:///system"
+    fish_add_path $HOME/.local/bin
+  '';
+  
+  shellAliases = {
     aria = "aria2c -x16 -s16";
     vid = "yt-dlp --cookies-from-browser chrome";
     nrs = "sudo nixos-rebuild switch --flake /home/robin/nixos#doc";
@@ -92,21 +89,16 @@ programs.git = {
     hrs = "home-manager switch --flake /home/robin/nixos#robin";
     hconf = "nvim /home/robin/nixos/home/robin.nix";
   };
-
-    initContent = ''
-    PROMPT='[%n@%m %~] '
-
-    bindkey -e 
-    bindkey '^ ' autosuggest-accept
-
-    path+=("$HOME/.local/bin")
-    export PATH 
-
-    eval "$(fzf --zsh)"
-    eval "$(zoxide init zsh)"
-    ''; 
   
-  };
+  interactiveShellInit = ''
+  set -g fish_prompt_pwd_dir_length 0
+    fzf --fish | source
+
+    zoxide init fish | source
+  '';
+};
+
+
   
   #tmux config
 programs.tmux = {

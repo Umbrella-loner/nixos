@@ -25,6 +25,9 @@ zramSwap.enable = true;
     '';
   };
 
+#tailscale ssh thing 
+services.tailscale.enable = true; 
+networking.firewall.checkReversePath = "loose";
 #niri download 
 programs.niri.enable = true;
   #allow libvirt networking 
@@ -117,29 +120,8 @@ services.logind.settings.Login = {
     defaultNetwork.settings.dns_enabled = true;
   };
 
-programs.zsh = {
-  enable = true;
-
-  enableCompletion = true;
-  autosuggestions.enable = true;
-  syntaxHighlighting.enable = true;
-
-
-  # Global interactive config (applies to ALL users)
-  interactiveShellInit = ''
-    bindkey -e 
-    bindkey '^ ' autosuggest-accept
-    path+=("$HOME/.local/bin")
-    export PATH
- # fzf integration
-    eval "$(fzf --zsh)"
-    
-    # zoxide (better cd)
-    eval "$(zoxide init zsh)"
-  '';
-
-};
-users.defaultUserShell = pkgs.zsh;
+programs.fish.enable = true;
+users.defaultUserShell = pkgs.fish;
 
 #dbus-thing-block
 services.dbus.enable = true;
@@ -241,8 +223,6 @@ services.flatpak.enable = true;
     packages = with pkgs; [];
   };
 
-#nix-index
-programs.nix-index.enable = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
