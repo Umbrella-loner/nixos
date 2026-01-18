@@ -83,11 +83,11 @@ programs.fish = {
   shellAliases = {
     aria = "aria2c -x16 -s16";
     vid = "yt-dlp --cookies-from-browser chrome";
-    nrs = "sudo nixos-rebuild switch --flake /home/robin/nixos#doc";
-    nconf = "nvim /home/robin/nixos/configuration.nix";
-    nfk = "nvim /home/robin/nixos/flake.nix";
-    hrs = "home-manager switch --flake /home/robin/nixos#robin";
-    hconf = "nvim /home/robin/nixos/home/robin.nix";
+    nrs = "sudo nixos-rebuild switch --flake /home/robin/nix#doc";
+    nconf = "nvim /home/robin/nix/configuration.nix";
+    nfk = "nvim /home/robin/nix/flake.nix";
+    hrs = "home-manager switch --flake /home/robin/nix#robin";
+    hconf = "nvim /home/robin/nix/home/robin.nix";
   };
   
   interactiveShellInit = ''
@@ -191,7 +191,6 @@ home.packages = with pkgs; [
   fd
   bat
   eza
-  neovim
   gammastep
   swaynotificationcenter
   nerd-fonts.jetbrains-mono

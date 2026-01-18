@@ -246,6 +246,7 @@ bc
 cliphist
 glib
 gsettings-desktop-schemas
+neovim
 gcc 
 clang
 clang-tools
