@@ -113,6 +113,20 @@ services.logind.settings.Login = {
   HandleLidSwitchExternalPower = "ignore";
 };
 
+programs.zsh = {
+  enable = true;
+  autosuggestions.enable = true;
+  syntaxHighlighting.enable = true;
+  enableCompletion = true;
+};
+
+environment.shells = with pkgs; [ pkgs.zsh ];
+
+users.users.robin = {
+  shell = pkgs.zsh;
+};
+
+
   #virtualization podman 
   virtualisation.podman = { 
     enable = true; 
@@ -120,8 +134,6 @@ services.logind.settings.Login = {
     defaultNetwork.settings.dns_enabled = true;
   };
 
-programs.fish.enable = true;
-users.defaultUserShell = pkgs.fish;
 
 #dbus-thing-block
 services.dbus.enable = true;
@@ -169,7 +181,7 @@ services.openssh = {
 
 boot.kernelParams = [
 "console=tty50"
-"mem_sleep_default=deep"
+"i915.enable_psr=0"
 ];
 
 

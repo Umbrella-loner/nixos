@@ -24,12 +24,17 @@ programs.nix-index = {
   #nirii 
   home.file.".config/niri/config.kdl".source = ../niri/config.kdl;
  
+#o
   #nvim 
   home.file.".config/nvim/init.lua".source = ../nvim/init.lua;
 
   #alacritty 
   home.file.".config/alacritty/alacritty.toml".source = ./alacritty/alacritty.toml;
 
+home.file.".config/rofi" = { 
+  source = ./rofi;
+  recursive = true;
+};
   #hyprland 
   home.file.".config/hypr" = {
     source = ./hypr; 
@@ -71,34 +76,43 @@ programs.git = {
     nix-direnv.enable = true; 
   }; 
 
-#fish block 
-programs.fish = {
+#zsh config
+programs.zsh = {
   enable = true;
-  
-  shellInit = ''
-    set -gx LIBVIRT_DEFAULT_URI "qemu:///system"
-    fish_add_path $HOME/.local/bin
-  '';
-  
+
+  enableCompletion = true;
+  autosuggestion.enable = true;
+  syntaxHighlighting.enable = true;
+
+  history = {
+    path = "$HOME/.zsh_history";
+    size = 10000;
+    save = 10000;
+    ignoreDups = true;
+    extended = true;
+  };
+
   shellAliases = {
     aria = "aria2c -x16 -s16";
-    vid = "yt-dlp --cookies-from-browser chrome";
-    nrs = "sudo nixos-rebuild switch --flake /home/robin/nix#doc";
+    vid  = "yt-dlp --cookies-from-browser chrome";
+
+    nrs   = "sudo nixos-rebuild switch --flake /home/robin/nix#doc";
     nconf = "nvim /home/robin/nix/configuration.nix";
-    nfk = "nvim /home/robin/nix/flake.nix";
-    hrs = "home-manager switch --flake /home/robin/nix#robin";
+    nfk   = "nvim /home/robin/nix/flake.nix";
+    hrs   = "home-manager switch --flake /home/robin/nix#robin";
     hconf = "nvim /home/robin/nix/home/robin.nix";
   };
-  
-  interactiveShellInit = ''
-  set -g fish_prompt_pwd_dir_length 0
-  set -g fish_greeting
-    fzf --fish | source
 
-    zoxide init fish | source
+  initContent = ''
+    bindkey -e
+
+
+    export PATH="$HOME/.local/bin:$PATH"
+    export LIBVIRT_DEFAULT_URI="qemu:///system"
+
+    PROMPT='[%n@%m %~] '
   '';
 };
-
 
   
   #tmux config
@@ -227,7 +241,6 @@ home.packages = with pkgs; [
   blueman 
   swayosd 
   ffmpegthumbnailer
-  rofi
   hyprpaper
   waybar
   openssl

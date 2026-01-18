@@ -7,7 +7,7 @@
 
     "modules-left": ["niri/workspaces"],
     "modules-center": ["clock"],
-"modules-right": ["custom/cpu_temp", "custom/ram", "tray", "network", "bluetooth", "battery"],
+"modules-right": ["tray", "network", "bluetooth", "battery"],
 
     "hyprland/workspaces": {
         "format": "{name}",
