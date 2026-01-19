@@ -33,7 +33,7 @@ window#waybar {
 }
 
 /* Right-side modules */
-#battery, #network, #tray {
+#battery, #tray {
     padding: 0 10px;
 }
 
@@ -41,12 +41,18 @@ window#waybar {
     color: #ffcc00;
 }
 
+#network { 
+  font-size: 22px;
+  padding: 0 6px;
+  color: #ffffff;
+} 
+
 #battery.critical {
     color: #ff5555;
 }
 /* Bluetooth icon styling */
 #bluetooth {
-    font-size: 20px;       /* make icon bigger */
+    font-size: 22px;       /* make icon bigger */
     padding: 0 6px;        /* tighter spacing */
     color: #ffffff;
 }

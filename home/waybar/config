@@ -26,12 +26,22 @@
         "tooltip-format": "<b>{:%A, %d %B %Y}</b>\n<tt>{calendar}</tt>"
     },
 
-    "network": {
-        "format-wifi": "  {essid}",
-        "format-ethernet": "  {ipaddr}",
-        "format-disconnected": "  Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}",
-    },
+"network": {
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤭",
+    "tooltip-format-wifi": "{essid}\nSignal: {signalStrength}%",
+    "tooltip-format-ethernet": "{ifname}: {ipaddr}",
+    "format-icons": [
+        "󰤟",  // 0–20%
+        "󰤢",  // 20–40%
+        "󰤥",  // 40–60%
+        "󰤨"   // 60–100%
+    ],
+    "on-click": "nm-connection-editor"
+},
+
+
 "custom/cpu_temp": {
     "exec": "~/.config/waybar/scripts/cpu_temp.sh",
     "interval": 5,
@@ -69,7 +79,7 @@
 },
 "tray": {
 "icon-size": 22,
-"spacing": 12
+"spacing": 14
 },
 }
 

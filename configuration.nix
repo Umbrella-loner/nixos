@@ -249,9 +249,11 @@ python3
 distrobox
 lldb
 ffmpegthumbnailer
+papirus-icon-theme
 lm_sensors
 libnotify
 wineWowPackages.stable 
+iwgtk
 winetricks
 nerd-fonts.iosevka
 zen-browser.packages.${pkgs.system}.default
@@ -325,7 +327,11 @@ services.keyd = {
 
 #bluetooth-block
 hardware.bluetooth.enable = true;
-services.blueman.enable = true;
+services.blueman.enable = true; 
+
+systemd.user.services.blueman-applet = { 
+  enable = false; 
+};
 
 
   #docker-block
