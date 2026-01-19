@@ -222,6 +222,7 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ];
     variant = "";
   };
 
+hardware.intel-gpu-tools.enable = true;
 
 #flatpak-apps
 services.flatpak.enable = true;

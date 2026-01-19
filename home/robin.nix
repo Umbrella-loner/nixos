@@ -95,7 +95,7 @@ programs.zsh = {
   shellAliases = {
     aria = "aria2c -x16 -s16";
     vid  = "yt-dlp --cookies-from-browser chrome";
-
+    ins = "yt-dlp --cookies ~/.instagram.txt";
     nrs   = "sudo nixos-rebuild switch --flake /home/robin/nix#doc";
     nconf = "nvim /home/robin/nix/configuration.nix";
     nfk   = "nvim /home/robin/nix/flake.nix";
