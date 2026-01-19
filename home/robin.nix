@@ -222,6 +222,7 @@ home.packages = with pkgs; [
   jq
   openssh
   yq
+  s-tui
   man-pages
   man-pages-posix
   fzf
