@@ -28,8 +28,6 @@ zramSwap.enable = true;
 #tailscale ssh thing 
 services.tailscale.enable = true; 
 networking.firewall.checkReversePath = "loose";
-#niri download 
-programs.niri.enable = true;
   #allow libvirt networking 
   networking.firewall = { 
     enable = true; 
@@ -126,6 +124,8 @@ users.users.robin = {
   shell = pkgs.zsh;
 };
 
+#niri block 
+programs.niri.enable = true;
 
   #virtualization podman 
   virtualisation.podman = { 
@@ -188,7 +188,7 @@ boot.kernelParams = [
 
 #flakes-setting
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  networking.hostName = "sober"; # Define your hostname.
+  networking.hostName = "transcendent"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -245,17 +245,10 @@ services.flatpak.enable = true;
 
 git
 steam-run
-python3
 distrobox
-lldb
 ffmpegthumbnailer
-papirus-icon-theme
 lm_sensors
 libnotify
-wineWowPackages.stable 
-iwgtk
-winetricks
-nerd-fonts.iosevka
 zen-browser.packages.${pkgs.system}.default
 bc
 cliphist

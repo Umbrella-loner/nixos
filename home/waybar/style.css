@@ -52,7 +52,7 @@ window#waybar {
 }
 /* Bluetooth icon styling */
 #bluetooth {
-    font-size: 16px;       /* make icon bigger */
+    font-size: 19px;       /* make icon bigger */
     padding: 0 6px;        /* tighter spacing */
     color: #ffffff;
 }

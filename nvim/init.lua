@@ -52,9 +52,9 @@ require("lazy").setup({
   -- ───────────────────────────────────────────────────────────────────────────
   { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
-  { 
-    "ThePrimeagen/harpoon", 
-    branch = "harpoon2", 
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" }
   },
   -- ───────────────────────────────────────────────────────────────────────────
@@ -286,3 +286,4 @@ vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename symbol' }
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code action' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous diagnostic' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
+

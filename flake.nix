@@ -24,7 +24,7 @@
     # ─────────────────────────────────────────────
     # NixOS system (NO Home Manager here)
     # ─────────────────────────────────────────────
-    nixosConfigurations.sober = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.transcendent = nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = { inherit zen-browser; };
       modules = [

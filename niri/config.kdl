@@ -9,7 +9,7 @@ input {
     tap
     }
   mouse {
-    accel-speed 0.2
+    accel-speed 0.4
     accel-profile "flat"
 
   }

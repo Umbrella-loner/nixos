@@ -24,9 +24,8 @@ programs.nix-index = {
   #nirii 
   home.file.".config/niri/config.kdl".source = ../niri/config.kdl;
  
+ home.file.".config/nvim/init.lua".source = ../nvim/init.lua;
 #o
-  #nvim 
-  home.file.".config/nvim/init.lua".source = ../nvim/init.lua;
 
   #alacritty 
   home.file.".config/alacritty/alacritty.toml".source = ./alacritty/alacritty.toml;
@@ -96,7 +95,7 @@ programs.zsh = {
     aria = "aria2c -x16 -s16";
     vid  = "yt-dlp --cookies-from-browser chrome";
     ins = "yt-dlp --cookies ~/.cookies/instagram.txt";
-    nrs   = "sudo nixos-rebuild switch --flake /home/robin/nix#sober";
+    nrs   = "sudo nixos-rebuild switch --flake /home/robin/nix#transcendent";
     nconf = "nvim /home/robin/nix/configuration.nix";
     nfk   = "nvim /home/robin/nix/flake.nix";
     hrs   = "home-manager switch --flake /home/robin/nix#robin";
