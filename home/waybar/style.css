@@ -42,7 +42,7 @@ window#waybar {
 }
 
 #network { 
-  font-size: 22px;
+  font-size: 15px;
   padding: 0 6px;
   color: #ffffff;
 } 
@@ -52,7 +52,7 @@ window#waybar {
 }
 /* Bluetooth icon styling */
 #bluetooth {
-    font-size: 22px;       /* make icon bigger */
+    font-size: 16px;       /* make icon bigger */
     padding: 0 6px;        /* tighter spacing */
     color: #ffffff;
 }

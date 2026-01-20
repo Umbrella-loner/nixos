@@ -36,3 +36,4 @@ white = "#FFFFFF"
 [terminal.shell]
 program = "/run/current-system/sw/bin/zsh"
 args = ["-l"]
+
