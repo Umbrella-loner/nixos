@@ -237,7 +237,6 @@ home.packages = with pkgs; [
   vscode 
   mpv
   alacritty 
-  protonvpn-gui
   grim 
   slurp 
   blueman 
