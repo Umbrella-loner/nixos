@@ -75,34 +75,6 @@ programs.git = {
     nix-direnv.enable = true; 
   }; 
 
-#starship block 
-programs.starship = {
-  enable = true;
-  settings = {
-    add_newline = false;
-
-    format = "$directory$git_branch$git_status$character";
-
-    directory = {
-      style = "blue";
-      truncation_length = 3;
-    };
-
-    git_branch = {
-      symbol = " ";
-      style = "purple";
-    };
-
-    git_status = {
-      style = "red";
-    };
-
-    character = {
-      success_symbol = "[❯](green)";
-      error_symbol = "[❯](red)";
-    };
-  };
-};
 
 #zsh config
 programs.zsh = {
@@ -137,6 +109,8 @@ programs.zsh = {
 
     export PATH="$HOME/.local/bin:$PATH"
     export LIBVIRT_DEFAULT_URI="qemu:///system"
+    PROMPT='[%n@%m %~] '
+
 
   '';
 };
