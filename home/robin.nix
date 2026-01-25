@@ -108,6 +108,7 @@ programs.zsh = {
 
 
     export PATH="$HOME/.local/bin:$PATH"
+    export PATH="$HOME/.opencode/bin:$PATH"
     export LIBVIRT_DEFAULT_URI="qemu:///system"
     PROMPT='[%n@%m %~] '
 
@@ -231,6 +232,7 @@ home.packages = with pkgs; [
   tldr
   google-chrome
   pkgs.thunar 
+  protonvpn-gui
   pkgs.tumbler 
   evince 
   ps_mem

@@ -36,7 +36,7 @@ require("lazy").setup({
         dim_inactive = false,
         lualine_bold = false,
       })
-      vim.cmd.colorscheme("tokyonight-moon")
+      vim.cmd.colorscheme("desert")
     end,
   },
 
