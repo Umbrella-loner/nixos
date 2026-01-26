@@ -17,7 +17,7 @@
   let
     system = "x86_64-linux";
 
-    pkgs-home = import nixpkgs-home {
+    pkgs = import nixpkgs-home {
       inherit system;
       config.allowUnfree = true;
     };
@@ -38,7 +38,7 @@
     # ─────────────────────────────────────────────
     homeConfigurations.robin =
       home-manager.lib.homeManagerConfiguration {
-        inherit pkgs-home;
+        pkgs = pkgs;
         modules = [
           ./home/robin.nix
         ];

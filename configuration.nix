@@ -124,8 +124,13 @@
     shell = pkgs.zsh;
   };
 
-#niri block 
-  programs.niri.enable = true;
+
+#hyprland block 
+programs.hyprland = { 
+  enable = true;
+  xwayland.enable = true;
+};
+
 
 #virtualization podman 
   virtualisation.podman = { 

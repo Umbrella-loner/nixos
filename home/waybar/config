@@ -5,7 +5,7 @@
     "margin": 0,
     "spacing": 10,
 
-    "modules-left": ["niri/workspaces"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
 "modules-right": ["tray", "battery"],
 
@@ -15,11 +15,8 @@
     },
 
 "niri/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-        "active": "●",
-        "default": "○"
-    }
+  "format": "{index}",
+  "on-click": "niri msg action focus-workspace {index}"
 },
     "clock": {
         "format": "{:%a, %b %d  %I:%M %p}",

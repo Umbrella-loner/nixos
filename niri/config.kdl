@@ -9,7 +9,7 @@ input {
     tap
     }
   mouse {
-    accel-speed 0.4
+    accel-speed 0.6
     accel-profile "flat"
 
   }
@@ -23,7 +23,7 @@ output "eDP-1" {
 }
 
 animations { 
-  slowdown 1.0
+  slowdown 0.6
 }
 
 environment {
@@ -74,8 +74,6 @@ binds {
     
     Mod+H { focus-column-left; }
     Mod+L { focus-column-right; }
-    Mod+J { focus-workspace-down; }
-    Mod+K { focus-workspace-up; }
   
 
     Mod+Left { focus-column-left; }

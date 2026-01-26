@@ -20,12 +20,18 @@ programs.nix-index = {
   enable = true;
   enableZshIntegration = true;
 };
+
+
   #symlinks 
+
+  
   #nirii 
   home.file.".config/niri/config.kdl".source = ../niri/config.kdl;
- 
+
+
+#nvim  
  home.file.".config/nvim/init.lua".source = ../nvim/init.lua;
-#o
+
 
   #alacritty 
   home.file.".config/alacritty/alacritty.toml".source = ./alacritty/alacritty.toml;
@@ -44,6 +50,19 @@ home.file.".config/rofi" = {
     source = ./waybar;
     recursive = true;
   };
+
+home.file.".local/bin/brave-scaled" = {
+  text = ''
+    #!/usr/bin/env bash
+    exec brave \
+      --enable-features=UseOzonePlatform \
+      --ozone-platform=wayland \
+      --force-device-scale-factor=1.25 "$@"
+  '';
+  executable = true;
+};
+
+
   #git settings 
 programs.git = {
     enable = true; 
