@@ -95,44 +95,33 @@ programs.git = {
   }; 
 
 
-#zsh config
-programs.zsh = {
+#fish block 
+programs.fish = { 
   enable = true;
 
-  enableCompletion = true;
-  autosuggestion.enable = true;
-  syntaxHighlighting.enable = true;
-
-  history = {
-    path = "$HOME/.zsh_history";
-    size = 10000;
-    save = 10000;
-    ignoreDups = true;
-    extended = true;
-  };
-
-  shellAliases = {
-    aria = "aria2c -x16 -s16";
-    vid  = "yt-dlp --cookies-from-browser chrome";
-    ins = "yt-dlp --cookies ~/.cookies/instagram.txt";
-    nrs   = "sudo nixos-rebuild switch --flake /home/robin/nix#transcendent";
-    nconf = "nvim /home/robin/nix/configuration.nix";
-    nfk   = "nvim /home/robin/nix/flake.nix";
-    hrs   = "home-manager switch --flake /home/robin/nix#robin";
-    hconf = "nvim /home/robin/nix/home/robin.nix";
-  };
-
-  initContent = ''
-    bindkey -e
-
-
-    export PATH="$HOME/.local/bin:$PATH"
-    export PATH="$HOME/.opencode/bin:$PATH"
-    export LIBVIRT_DEFAULT_URI="qemu:///system"
-    PROMPT='[%n@%m %~] '
-
-
+  shellInit = '' 
+  set -gx LIBVIRT_DEFAULT_URI "qemu:///system"
+  fish_add_path /home/robin/.opencode/bin
+  fish_add_path $HOME/.local/bin 
+  set -U fish_greeting
   '';
+
+  shellAliases = { 
+    aria = "aria2c -x16 -s16";
+    vid = "yt-dlp --cookies-from-browser chrome";
+    nrs = "sudo nixos-rebuild switch --flake /home/robin/nix#transcendent";
+    hrs = "home-manager switch --flake /home/robin/nix#robin";
+    hconf = "nvim /home/robin/nix/home/robin.nix";
+    ins = "yt -dlp --cookies /home/robin/.cookies/instagram.txt";
+    nconf = "nvim /home/robin/nix/configuration.nix";
+    nfk = "nvim /home/robin/nix/flake.nix";
+};
+
+interactiveShellInit = '' 
+set -g fish_prompt_pwd_dir_length 0 
+fzf --fish | source 
+zoxide init fish | source 
+'';
 };
 
   

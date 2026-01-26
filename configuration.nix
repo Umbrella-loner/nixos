@@ -111,17 +111,12 @@
     HandleLidSwitchExternalPower = "ignore";
   };
 
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    enableCompletion = true;
-  };
 
-  environment.shells = with pkgs; [ pkgs.zsh ];
+programs.fish.enable = true;
+  environment.shells = with pkgs; [ pkgs.fish ];
 
   users.users.robin = {
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
 

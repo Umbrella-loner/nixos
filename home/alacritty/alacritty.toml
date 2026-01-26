@@ -34,6 +34,6 @@ cyan = "#55FFFF"
 white = "#FFFFFF"
 
 [terminal.shell]
-program = "/run/current-system/sw/bin/zsh"
+program = "/run/current-system/sw/bin/fish"
 args = ["-l"]
 
