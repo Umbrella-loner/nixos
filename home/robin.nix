@@ -15,15 +15,7 @@ home.homeDirectory = "/home/robin";
     gtk.enable = true;
   };
 
-#nix index 
-programs.nix-index = { 
-  enable = true;
-  enableZshIntegration = true;
-};
-
-
   #symlinks 
-
   
   #nirii 
   home.file.".config/niri/config.kdl".source = ../niri/config.kdl;
@@ -86,14 +78,6 @@ programs.git = {
     };
   };
     
-  #direnv settings 
-  programs.direnv = { 
-    enable = true; 
-    enableZshIntegration = true; 
-    enableBashIntegration = true;
-    nix-direnv.enable = true; 
-  }; 
-
 
 #fish block 
 programs.fish = { 
@@ -119,6 +103,7 @@ programs.fish = {
 
 interactiveShellInit = '' 
 set -g fish_prompt_pwd_dir_length 0 
+set -U fish_greeting
 fzf --fish | source 
 zoxide init fish | source 
 '';
@@ -196,56 +181,22 @@ programs.tmux = {
 };
 
 home.packages = with pkgs; [
-  fastfetch 
-  direnv 
-  nix-direnv
-  yt-dlp
-  obs-studio 
   rofi
-  obs-studio-plugins.wlrobs
-  obs-studio-plugins.obs-pipewire-audio-capture
-  obs-studio-plugins.obs-vkcapture
-  blender
   brave
   zip
   file
   tree
   less
-  ripgrep
-  fd
-  bat
-  eza
   gammastep
   swaynotificationcenter
   nerd-fonts.jetbrains-mono
   nerd-fonts.fira-code
-  htop
-  ncdu
-  lsof
-  strace
-  yazi
   p7zip
   rar
-  nmap
-  netcat
-  rsync
-  jq
-  openssh
-  yq
-  s-tui
-  man-pages
-  man-pages-posix
   fzf
   zoxide
-  tldr
-  google-chrome
   pkgs.thunar 
-  protonvpn-gui
   pkgs.tumbler 
-  evince 
-  ps_mem
-  vscode 
-  mpv
   alacritty 
   grim 
   slurp 
@@ -255,6 +206,5 @@ home.packages = with pkgs; [
   hyprpaper
   waybar
   openssl
-  cloud-utils
   ];
 }

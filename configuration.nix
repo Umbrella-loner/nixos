@@ -10,39 +10,12 @@
     ./hardware-configuration.nix
     ];
 
-#virtualization
-  virtualisation.libvirtd.enable = true;
-  networking.nftables.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
-  programs.virt-manager.enable = true;
-  zramSwap.enable = true;
-
 #showing password feedback 
   security.sudo = { 
     enable = true;
     extraConfig = ''
       Defaults pwfeedback
       '';
-  };
-
-#tailscale ssh thing 
-  services.tailscale.enable = true; 
-  networking.firewall.checkReversePath = "loose";
-#allow libvirt networking 
-  networking.firewall = { 
-    enable = true; 
-    trustedInterfaces = [ "virbr0" ];
-  };
-
-  networking.nat = { 
-    enable = true;
-    internalInterfaces = [ "virbr0" ];
-  };
-#specialzations for my nixos 
-  specialisation.lqx.configuration = {
-    system.nixos.tags = [ "lqx" ];
-
-    boot.kernelPackages = lib.mkForce pkgs.linuxPackages_lqx;
   };
 
 #darkmode
@@ -119,20 +92,8 @@ programs.fish.enable = true;
     shell = pkgs.fish;
   };
 
-
-#hyprland block 
-programs.hyprland = { 
-  enable = true;
-  xwayland.enable = true;
-};
-
-
-#virtualization podman 
-  virtualisation.podman = { 
-    enable = true; 
-    dockerCompat = true;   #creates docker alias for podman 
-      defaultNetwork.settings.dns_enabled = true;
-  };
+  #niri block 
+  programs.niri.enable = true;
 
 
 #dbus-thing-block
@@ -162,22 +123,6 @@ programs.hyprland = {
       xdg-desktop-portal-gtk
     ];
   };
-
-  services.openssh = {
-    enable = true;
-
-    settings = {
-# Core security
-      PermitRootLogin = "no";
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      ChallengeResponseAuthentication = false;
-    };
-
-# Optional but recommended
-  };
-
-  services.fail2ban.enable = true;
 
   boot.kernelParams = [
     "console=tty50"
@@ -216,12 +161,6 @@ programs.hyprland = {
     LC_TIME = "en_IN";
   };
 
-# Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
   hardware.intel-gpu-tools.enable = true;
 
 #flatpak-apps
@@ -232,7 +171,7 @@ programs.hyprland = {
   users.users.robin = {
     isNormalUser = true;
     description = "robin";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "kvm" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
 
@@ -244,35 +183,24 @@ programs.hyprland = {
   environment.systemPackages = with pkgs; [
 
     git
-      steam-run
-      distrobox
-      ffmpegthumbnailer
-      lm_sensors
-      libnotify
-      zen-browser.packages.${pkgs.system}.default
-      bc
-      cliphist
-      glib
-      gsettings-desktop-schemas
-      neovim
-      gcc 
-      clang
-      clang-tools
-      gnumake
-      cmake
-      gdb
-      vim
-      curl 
-      wget 
-      unzip 
-      curl
-      adwaita-icon-theme
-      docker
-      tmux
-      wl-clipboard
-      brightnessctl
-      networkmanagerapplet
-      aria2
+    ffmpegthumbnailer
+    lm_sensors
+    libnotify
+    zen-browser.packages.${pkgs.system}.default
+    glib
+    gsettings-desktop-schemas
+    neovim
+    gcc 
+    curl 
+    wget 
+    unzip 
+    curl
+    adwaita-icon-theme
+    tmux
+    wl-clipboard
+    brightnessctl
+    networkmanagerapplet
+    aria2
       ];
 
 #fonts
@@ -325,14 +253,6 @@ programs.hyprland = {
   systemd.user.services.blueman-applet = { 
     enable = false; 
   };
-
-
-#docker-block
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
-
 
 
 
