@@ -56,28 +56,6 @@
     useOSProber = true;
   };
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs;
-  [
-    stdenv.cc.cc
-      zlib
-      openssl
-      glib
-      gtk3
-      xorg.libX11
-      xorg.libXcursor
-      xorg.libXrandr
-      xorg.libXinerama
-      xorg.libXcomposite
-      xorg.libXdamage
-      xorg.libXfixes
-      xorg.libXtst
-      alsa-lib
-      pulseaudio
-      wayland
-      mesa
-  ];
-
 #laptop stuff
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";
